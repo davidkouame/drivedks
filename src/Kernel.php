@@ -23,6 +23,9 @@ class Kernel extends BaseKernel
                 yield new $class();
             }
         }
+        $bundles = array(
+            new \Symfony\Bundle\MonologBundle\MonologBundle(),
+        );
     }
 
     public function getProjectDir(): string
