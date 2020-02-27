@@ -164,4 +164,9 @@ class File
     {
         return $this->updated->format('Y-m-d H:i:s');
     }
+
+    public function getUrl(): ?String
+    {
+        return $_ENV['URL_SERVICE'].'assets/'.$this->disk_name;
+    }
 }

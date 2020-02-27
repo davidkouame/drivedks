@@ -24,8 +24,8 @@ Class Helpers {
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
 		$data = $arr;
-        $jsonContent = $serializer->serialize($data, 'json');
-        $response = new Response();
+        $jsonContent = $serializer->serialize($data, 'json', ['json_encode_options' => JSON_UNESCAPED_SLASHES]);
+		$response = new Response();
         $response->setContent($jsonContent);
         $response->headers->set('Content-Type', 'application/json');
 		return $response;

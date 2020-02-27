@@ -12,8 +12,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Asset\Package;
 use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class FileController
+class FileController extends Controller
 {
 
     private $fileRepository;
@@ -97,9 +98,18 @@ class FileController
     /**
      * @Route("/api/v1/files/{diskname}", name="show_files", methods={"GET","HEAD"})
       */
-    public function show($diskname){
+    public function show(Request $request, $diskname){
+        // dd(Request::getBaseUrl());
+        // dd($this->container->get('router')->getContext()->getSchemeAndHttpHost());
+        // die("");
+        // dd(Request::getScheme());
+        dd($_ENV['URL_SERVICE']);
+        $req = new Request;
+        $baseurl = $req->getScheme() . '://' . $req->getHttpHost() . $req->getBasePath();
+        dd($baseurl);
         $package = new Package(new EmptyVersionStrategy());
-        echo $package->getUrl('/image.png');
+        // echo $package->getUrl('/image.png');
+        echo $this->container->getParameter('kernel.root_dir');
         echo $diskname;
         die("");
     }

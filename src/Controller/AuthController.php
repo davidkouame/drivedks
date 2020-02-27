@@ -29,7 +29,7 @@ class AuthController
     }
 
     /**
-     * @Route("/qsdsqd/v1/auth/register", name="register_user", methods={"POST"})
+     * @Route("/auth/register", name="register_user", methods={"POST"})
      */
     public function registerLogin(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -67,6 +67,7 @@ class AuthController
      */
     public function login(Request $request)
     {
+        dd("fff");
         if ($content = $request->getContent()) {
             $parametersAsArray = json_decode($content, true);
         }
